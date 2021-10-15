@@ -1,3 +1,4 @@
+import 'package:app_admin_dashboard/provider/sidemenu_provider.dart';
 import 'package:app_admin_dashboard/ui/layouts/dashboard/dashboard_layout.dart';
 import 'package:app_admin_dashboard/ui/layouts/splash/splash_layout.dart';
 import 'package:flutter/material.dart';
@@ -25,10 +26,8 @@ class AppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          lazy: false,
-          create: (_) => AuthProvider(),
-        ),
+        ChangeNotifierProvider(lazy: false, create: (_) => AuthProvider()),
+        ChangeNotifierProvider(lazy: false, create: (_) => SideMenuProvider()),
       ],
       child: const MyApp(),
     );

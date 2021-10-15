@@ -33,7 +33,6 @@ class LoginView extends StatelessWidget {
                     children: [
                       //Email
                       TextFormField(
-                        autovalidateMode: AutovalidateMode.always,
                         onChanged: (value) => loginProvider.email = value,
                         validator: (value) {
                           if (!EmailValidator.validate(value ?? '')) return 'Email no válido';
@@ -49,7 +48,6 @@ class LoginView extends StatelessWidget {
                       SizedBox(height: size.height * 0.02),
                       //Password
                       TextFormField(
-                        autovalidateMode: AutovalidateMode.always,
                         onChanged: (value) => loginProvider.password = value,
                         validator: (value) {
                           if (value == null || value.isEmpty) return 'Ingrese su contraseña';

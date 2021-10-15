@@ -41,7 +41,7 @@ class AuthProvider extends ChangeNotifier {
 
     //TODO: Ir al backend y comprobar si JWT es valido
 
-    await Future.delayed(Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 1000));
 
     authStatus = AuthStatus.authenticated;
     notifyListeners();

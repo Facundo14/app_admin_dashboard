@@ -6,13 +6,15 @@ class NoPageFoundView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Center(
-      child: Text(
-        '404 - No se encontró la página',
-        style: GoogleFonts.montserratAlternates(
-          fontSize: size.width * 0.07,
-          fontWeight: FontWeight.bold,
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: Text(
+          '404 - No se encontró la página',
+          style: GoogleFonts.montserratAlternates(
+            fontSize: 50,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
