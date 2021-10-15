@@ -18,7 +18,7 @@ class CustomOutlinedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return OutlinedButton(
-      onPressed: () => onPressed,
+      onPressed: onPressed,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: size.width * 0.02,

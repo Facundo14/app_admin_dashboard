@@ -12,7 +12,6 @@ class AuthLayout extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Scrollbar(
-                
         //isAlwaysShown: false,
         child: ListView(
           physics: const ClampingScrollPhysics(),
@@ -39,7 +38,7 @@ class _DesktopBody extends StatelessWidget {
       height: size.height * 0.95,
       child: Row(
         children: [
-          const BackgroundTwitter(),
+          const Expanded(child: BackgroundTwitter()),
 
           //View Container
           Container(
@@ -74,16 +73,16 @@ class _MobileBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(height: size.height * 0.02),
-          CustomTitle(),
-          Container(
+          const CustomTitle(),
+          SizedBox(
             width: size.width,
             height: size.height * 0.5,
             child: child,
           ),
-          Container(
+          SizedBox(
             width: size.width,
             height: size.height * 0.4,
-            child: BackgroundTwitter(),
+            child: const BackgroundTwitter(),
           )
         ],
       ),

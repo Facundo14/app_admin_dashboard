@@ -7,18 +7,16 @@ class BackgroundTwitter extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
-    return Expanded(
+    return Container(
+      decoration: buildBoxDecoration(),
       child: Container(
-        decoration: buildBoxDecoration(),
-        child: Container(
-          constraints: BoxConstraints(maxWidth: size.width * 0.3),
-          child: const Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              child: Image(
-                image: AssetImage('twitter-white-logo.png'),
-                width: 400,
-              ),
+        constraints: BoxConstraints(maxWidth: size.width * 0.3),
+        child: const Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Image(
+              image: AssetImage('twitter-white-logo.png'),
+              width: 400,
             ),
           ),
         ),
