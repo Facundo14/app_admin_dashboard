@@ -1,4 +1,5 @@
 import 'package:app_admin_dashboard/provider/auth_provider.dart';
+import 'package:app_admin_dashboard/services/navigaton_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -87,13 +88,14 @@ class RegisterView extends StatelessWidget {
                         CustomOutlinedButton(
                           onPressed: () => onRegisterForm(context, registerProvider),
                           text: 'Crear cuenta',
+                          textColor: Colors.blue,
                         ),
 
                         SizedBox(height: size.height * 0.02),
                         LinkText(
                           texto: 'Ir al login',
                           onPressed: () {
-                            Navigator.pushNamed(context, Flurorouter.loginRoute);
+                            NavigationService.replaceTo(Flurorouter.loginRoute);
                           },
                         )
                       ],
@@ -106,7 +108,7 @@ class RegisterView extends StatelessWidget {
         ));
   }
 
-  void onRegisterForm(BuildContext context,RegisterFormProvider registerProvider) {
+  void onRegisterForm(BuildContext context, RegisterFormProvider registerProvider) {
     final validForm = registerProvider.validateForm();
     if (!validForm) return;
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
