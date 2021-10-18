@@ -1,3 +1,4 @@
+import 'package:app_admin_dashboard/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:app_admin_dashboard/provider/sidemenu_provider.dart';
@@ -59,7 +60,13 @@ class Sidebar extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           const TextSeparator(text: 'Exit'),
-          MenuItem(text: 'Logout', icon: Icons.exit_to_app_outlined, isActive: false, onPressed: () {}),
+          MenuItem(
+              text: 'Logout',
+              icon: Icons.exit_to_app_outlined,
+              isActive: false,
+              onPressed: () {
+                Provider.of<AuthProvider>(context, listen: false).logout();
+              }),
         ],
       ),
     );

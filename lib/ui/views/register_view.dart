@@ -1,3 +1,4 @@
+import 'package:app_admin_dashboard/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -34,6 +35,7 @@ class RegisterView extends StatelessWidget {
                       children: [
                         //Nombre
                         TextFormField(
+                          onFieldSubmitted: (_) => onRegisterForm(context, registerProvider),
                           onChanged: (value) => registerProvider.name = value,
                           validator: (value) {
                             if (value == null || value.isEmpty) return 'Ingrese su nombre';
@@ -50,6 +52,7 @@ class RegisterView extends StatelessWidget {
                         SizedBox(height: size.height * 0.02),
                         //Email
                         TextFormField(
+                          onFieldSubmitted: (_) => onRegisterForm(context, registerProvider),
                           onChanged: (value) => registerProvider.email = value,
                           validator: (value) {
                             if (!EmailValidator.validate(value ?? '')) return 'Email no válido';
@@ -65,6 +68,7 @@ class RegisterView extends StatelessWidget {
                         SizedBox(height: size.height * 0.02),
                         //Password
                         TextFormField(
+                          onFieldSubmitted: (_) => onRegisterForm(context, registerProvider),
                           onChanged: (value) => registerProvider.password = value,
                           validator: (value) {
                             if (value == null || value.isEmpty) return 'Ingrese su contraseña';
@@ -81,7 +85,7 @@ class RegisterView extends StatelessWidget {
                         ),
                         SizedBox(height: size.height * 0.02),
                         CustomOutlinedButton(
-                          onPressed: () => registerProvider.validateForm(),
+                          onPressed: () => onRegisterForm(context, registerProvider),
                           text: 'Crear cuenta',
                         ),
 
@@ -100,5 +104,16 @@ class RegisterView extends StatelessWidget {
             );
           },
         ));
+  }
+
+  void onRegisterForm(BuildContext context,RegisterFormProvider registerProvider) {
+    final validForm = registerProvider.validateForm();
+    if (!validForm) return;
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    authProvider.register(
+      registerProvider.email,
+      registerProvider.password,
+      registerProvider.name,
+    );
   }
 }
