@@ -68,6 +68,7 @@ class LoginView extends StatelessWidget {
                       CustomOutlinedButton(
                         onPressed: () => onFormSubmit(loginProvider, authProvider),
                         text: 'Ingresar',
+                        textColor: Colors.blue,
                       ),
 
                       SizedBox(height: size.height * 0.02),

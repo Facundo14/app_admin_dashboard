@@ -7,16 +7,19 @@ class BlankView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      physics: const ClampingScrollPhysics(),
-      children: [
-        Text('Blank Page', style: CustomLabels.h1),
-        const SizedBox(height: 10),
-        const WhiteCard(
-          title: 'Página en Blanco',
-          child: Text('Construye tu página...'),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: ListView(
+        physics: const ClampingScrollPhysics(),
+        children: [
+          Text('Blank Page', style: CustomLabels.h1),
+          const SizedBox(height: 10),
+          const WhiteCard(
+            title: 'Página en Blanco',
+            child: Text('Construye tu página...'),
+          )
+        ],
+      ),
     );
   }
 }

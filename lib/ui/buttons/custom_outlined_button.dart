@@ -6,12 +6,14 @@ class CustomOutlinedButton extends StatelessWidget {
   final String text;
   final Color color;
   final bool isFilled;
+  final Color textColor;
   const CustomOutlinedButton({
     Key? key,
     required this.onPressed,
     required this.text,
     this.color = Colors.blue,
     this.isFilled = false,
+    this.textColor = Colors.black,
   }) : super(key: key);
 
   @override
@@ -26,7 +28,7 @@ class CustomOutlinedButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: GoogleFonts.roboto(fontSize: size.width * 0.02),
+          style: GoogleFonts.roboto(fontSize: size.width * 0.02, color: textColor),
         ),
       ),
       style: ButtonStyle(

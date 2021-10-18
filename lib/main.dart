@@ -7,6 +7,7 @@ import 'package:app_admin_dashboard/ui/layouts/splash/splash_layout.dart';
 import 'package:provider/provider.dart';
 import 'package:app_admin_dashboard/provider/auth_provider.dart';
 import 'package:app_admin_dashboard/api/cafe_api.dart';
+import 'package:app_admin_dashboard/provider/categories_provider.dart';
 
 import 'package:app_admin_dashboard/router/router.dart';
 
@@ -32,6 +33,7 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(lazy: false, create: (_) => AuthProvider()),
         ChangeNotifierProvider(lazy: false, create: (_) => SideMenuProvider()),
+        ChangeNotifierProvider(create: (_) => CategoriesProvider()),
       ],
       child: const MyApp(),
     );

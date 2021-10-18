@@ -2,7 +2,7 @@ import 'package:app_admin_dashboard/services/local_storage.dart';
 import 'package:dio/dio.dart';
 
 class CafeApi {
-  static Dio _dio = Dio();
+  static final Dio _dio = Dio();
   static void condifureDio() {
     // Base de URL
     _dio.options.baseUrl = 'http://localhost:8080/api';
@@ -18,7 +18,6 @@ class CafeApi {
       final resp = await _dio.get(path);
       return resp.data;
     } catch (e) {
-      print(e);
       throw ('Error en el GET');
     }
   }
@@ -29,8 +28,27 @@ class CafeApi {
       final resp = await _dio.post(path, data: formData);
       return resp.data;
     } catch (e) {
-      print(e);
       throw ('Error en el POST');
+    }
+  }
+
+  static Future put(String path, Map<String, dynamic> data) async {
+    final formData = FormData.fromMap(data);
+    try {
+      final resp = await _dio.put(path, data: formData);
+      return resp.data;
+    } catch (e) {
+      throw ('Error en el PUT');
+    }
+  }
+
+  static Future delete(String path, Map<String, dynamic> data) async {
+    final formData = FormData.fromMap(data);
+    try {
+      final resp = await _dio.delete(path, data: formData);
+      return resp.data;
+    } catch (e) {
+      throw ('Error en el DELETE');
     }
   }
 }
