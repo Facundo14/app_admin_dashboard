@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustromInputs {
+class CustomInputs {
   static InputDecoration loginInputDecoration({
     required String hint,
     required String label,
@@ -36,6 +36,30 @@ class CustromInputs {
       prefixIcon: Icon(icon, color: Colors.grey),
       labelStyle: const TextStyle(color: Colors.grey),
       hintStyle: const TextStyle(color: Colors.grey),
+    );
+  }
+
+  static InputDecoration formInputDecoration({
+    required String hint,
+    required String label,
+    required IconData icon,
+  }) {
+    return InputDecoration(
+      border: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.indigo.withOpacity(0.3),
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.indigo.withOpacity(0.3),
+        ),
+      ),
+      hintText: hint,
+      hintStyle: TextStyle(color: Colors.grey),
+      labelText: label,
+      labelStyle: TextStyle(color: Colors.grey),
+      prefixIcon: Icon(icon, color: Colors.grey),
     );
   }
 }

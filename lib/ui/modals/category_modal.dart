@@ -51,7 +51,7 @@ class _CategoryModalState extends State<CategoryModal> {
           TextFormField(
             initialValue: widget.categoria?.nombre ?? '',
             onChanged: (value) => nombre = value,
-            decoration: CustromInputs.loginInputDecoration(
+            decoration: CustomInputs.loginInputDecoration(
               hint: 'Nombre de la categoria',
               label: 'Nombre',
               icon: Icons.new_releases_outlined,

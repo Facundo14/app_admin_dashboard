@@ -1,3 +1,5 @@
+import 'package:app_admin_dashboard/provider/user_form_provider.dart';
+import 'package:app_admin_dashboard/provider/users_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_admin_dashboard/provider/sidemenu_provider.dart';
@@ -34,6 +36,8 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(lazy: false, create: (_) => AuthProvider()),
         ChangeNotifierProvider(lazy: false, create: (_) => SideMenuProvider()),
         ChangeNotifierProvider(create: (_) => CategoriesProvider()),
+        ChangeNotifierProvider(create: (_) => UsersProvider()),
+        ChangeNotifierProvider(create: (_) => UserFormProvider()),
       ],
       child: const MyApp(),
     );

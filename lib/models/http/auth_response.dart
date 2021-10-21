@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import '../user_model.dart';
+
 class AuthResponse {
   AuthResponse({
     usuario,
@@ -25,45 +27,5 @@ class AuthResponse {
   Map<String, dynamic> toMap() => {
         "usuario": usuario.toMap(),
         "token": token,
-      };
-}
-
-class Usuario {
-  Usuario({
-    this.rol = '',
-    this.estado = false,
-    this.google = false,
-    this.nombre = '',
-    this.correo = '',
-    this.uid = '',
-  });
-
-  String rol;
-  bool estado;
-  bool google;
-  String nombre;
-  String correo;
-  String uid;
-
-  factory Usuario.fromJson(String str) => Usuario.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory Usuario.fromMap(Map<String, dynamic> json) => Usuario(
-        rol: json["rol"] ?? '',
-        estado: json["estado"] ?? false,
-        google: json["google"] ?? false,
-        nombre: json["nombre"] ?? '',
-        correo: json["correo"] ?? '',
-        uid: json["uid"] ?? '',
-      );
-
-  Map<String, dynamic> toMap() => {
-        "rol": rol,
-        "estado": estado,
-        "google": google,
-        "nombre": nombre,
-        "correo": correo,
-        "uid": uid,
       };
 }

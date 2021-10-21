@@ -19,42 +19,44 @@ class CategoriesDTS extends DataTableSource {
         DataCell(Text(category.id)),
         DataCell(Text(category.nombre)),
         DataCell(Text(category.usuario.nombre)),
-        DataCell(Row(
-          children: [
-            IconButton(
-                onPressed: () => showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (_) => CategoryModal(categoria: category),
-                    ),
-                icon: Icon(
-                  Icons.edit_outlined,
-                  color: Colors.orange.withOpacity(0.5),
-                )),
-            IconButton(
-                onPressed: () {
-                  final dialog = AlertDialog(
-                    title: const Text('Estas seguro de borrarlo?'),
-                    content: Text('Borrar definitivamente ${category.nombre}?'),
-                    actions: [
-                      TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('No')),
-                      TextButton(
-                          child: const Text('Si, Borrar'),
-                          onPressed: () {
-                            Provider.of<CategoriesProvider>(context, listen: false).deleteCategory(category.id, category.nombre);
-                            Navigator.of(context).pop();
-                          }),
-                    ],
-                  );
+        DataCell(
+          Row(
+            children: [
+              IconButton(
+                  onPressed: () => showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (_) => CategoryModal(categoria: category),
+                      ),
+                  icon: Icon(
+                    Icons.edit_outlined,
+                    color: Colors.orange.withOpacity(0.5),
+                  )),
+              IconButton(
+                  onPressed: () {
+                    final dialog = AlertDialog(
+                      title: const Text('Estas seguro de borrarlo?'),
+                      content: Text('Borrar definitivamente ${category.nombre}?'),
+                      actions: [
+                        TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('No')),
+                        TextButton(
+                            child: const Text('Si, Borrar'),
+                            onPressed: () {
+                              Provider.of<CategoriesProvider>(context, listen: false).deleteCategory(category.id, category.nombre);
+                              Navigator.of(context).pop();
+                            }),
+                      ],
+                    );
 
-                  showDialog(context: context, builder: (_) => dialog);
-                },
-                icon: Icon(
-                  Icons.delete_outline,
-                  color: Colors.red.withOpacity(0.5),
-                )),
-          ],
-        )),
+                    showDialog(context: context, builder: (_) => dialog);
+                  },
+                  icon: Icon(
+                    Icons.delete_outline,
+                    color: Colors.red.withOpacity(0.5),
+                  )),
+            ],
+          ),
+        ),
       ],
     );
   }
