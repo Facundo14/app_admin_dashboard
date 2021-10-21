@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:app_admin_dashboard/api/cafe_api.dart';
 import 'package:app_admin_dashboard/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -5,13 +7,6 @@ import 'package:flutter/material.dart';
 class UserFormProvider extends ChangeNotifier {
   Usuario? user;
   late GlobalKey<FormState> formKey;
-
-  //TODO: Actualizar el usuario
-
-  // metodo para notificar cambios
-  // void updateListeners() {
-  //   notifyListeners();
-  // }
 
   copyUserWith({
     String? rol,
@@ -47,12 +42,23 @@ class UserFormProvider extends ChangeNotifier {
     };
 
     try {
-      final resp = await CafeApi.put('/usuarios/${user!.uid}', data);
+      await CafeApi.put('/usuarios/${user!.uid}', data);
 
       return true;
     } catch (e) {
-      print('Error en update User: $e');
+      
       return false;
+    }
+  }
+
+  Future<Usuario> uploadImage(Uint8List bytes) async {
+    try {
+      final resp = await CafeApi.uploadFile('/uploads/usuarios/${user!.uid}', bytes);
+      user = Usuario.fromMap(resp);
+      notifyListeners();
+      return user!;
+    } catch (e) {
+      throw 'Error en user form Provider $e';
     }
   }
 }

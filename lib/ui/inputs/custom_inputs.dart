@@ -56,9 +56,9 @@ class CustomInputs {
         ),
       ),
       hintText: hint,
-      hintStyle: TextStyle(color: Colors.grey),
+      hintStyle: const TextStyle(color: Colors.grey),
       labelText: label,
-      labelStyle: TextStyle(color: Colors.grey),
+      labelStyle: const TextStyle(color: Colors.grey),
       prefixIcon: Icon(icon, color: Colors.grey),
     );
   }

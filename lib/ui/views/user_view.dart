@@ -1,11 +1,15 @@
-import 'package:app_admin_dashboard/provider/user_form_provider.dart';
-import 'package:app_admin_dashboard/router/router.dart';
-import 'package:app_admin_dashboard/services/navigaton_service.dart';
-import 'package:app_admin_dashboard/services/notifications_service.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_admin_dashboard/router/router.dart';
+
 import 'package:provider/provider.dart';
-import 'package:app_admin_dashboard/provider/users_provider.dart';
+import 'package:app_admin_dashboard/provider/providers.dart';
+
+import 'package:app_admin_dashboard/services/services.dart';
+
+import 'package:email_validator/email_validator.dart';
+import 'package:file_picker/file_picker.dart';
+
 import 'package:app_admin_dashboard/models/user_model.dart';
 import 'package:app_admin_dashboard/ui/cards/white_card.dart';
 import 'package:app_admin_dashboard/ui/inputs/custom_inputs.dart';
@@ -174,9 +178,12 @@ class _AvatarContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final userFormProvider = Provider.of<UserFormProvider>(context);
     final user = userFormProvider.user!;
+    final image = (user.img == null || user.img == '')
+        ? const Image(image: AssetImage('no-image.jpg'))
+        : FadeInImage.assetNetwork(placeholder: 'loader.gif', image: user.img!);
     return WhiteCard(
       width: 250,
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -189,10 +196,8 @@ class _AvatarContainer extends StatelessWidget {
               height: 160,
               child: Stack(
                 children: [
-                  const ClipOval(
-                    child: Image(
-                      image: AssetImage('no-image.jpg'),
-                    ),
+                  ClipOval(
+                    child: image,
                   ),
                   Positioned(
                     bottom: 5,
@@ -211,8 +216,21 @@ class _AvatarContainer extends StatelessWidget {
                         backgroundColor: Colors.indigo,
                         elevation: 0,
                         child: const Icon(Icons.camera_alt_outlined, size: 20),
-                        onPressed: () {
-                          //TODO: Seleccionar Imagen
+                        onPressed: () async {
+                          FilePickerResult? result = await FilePicker.platform.pickFiles(
+                            type: FileType.custom,
+                            allowedExtensions: ['jpg', 'jpeg', 'png'],
+                            allowMultiple: false,
+                          );
+
+                          if (result != null) {
+                            NotificationsService.showBusyIndicator(context);
+                            final newUser = await userFormProvider.uploadImage(result.files.first.bytes!);
+                            Navigator.of(context).pop();
+                            Provider.of<UsersProvider>(context, listen: false).refreshUser(newUser);
+                          } else {
+                            // User canceled the picker
+                          }
                         },
                       ),
                     ),

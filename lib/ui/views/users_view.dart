@@ -1,8 +1,11 @@
-import 'package:app_admin_dashboard/datatables/users_datasource.dart';
-import 'package:app_admin_dashboard/provider/users_provider.dart';
-import 'package:app_admin_dashboard/ui/labels/custom_labels.dart';
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
+import 'package:app_admin_dashboard/provider/providers.dart';
+
+import 'package:app_admin_dashboard/datatables/users_datasource.dart';
+
+import 'package:app_admin_dashboard/ui/labels/custom_labels.dart';
 
 class UsersView extends StatelessWidget {
   const UsersView({Key? key}) : super(key: key);
@@ -22,21 +25,21 @@ class UsersView extends StatelessWidget {
             sortAscending: usersProvider.ascending,
             sortColumnIndex: usersProvider.sortColumnIndex,
             columns: [
-              DataColumn(label: Text('Avatar')),
+              const DataColumn(label: Text('Avatar')),
               DataColumn(
-                  label: Text('Nombre'),
+                  label: const Text('Nombre'),
                   onSort: (colIndex, _) {
                     usersProvider.sortColumnIndex = 1;
                     usersProvider.sort<String>((user) => user.nombre);
                   }),
               DataColumn(
-                  label: Text('Correo'),
+                  label: const Text('Correo'),
                   onSort: (colIndex, _) {
                     usersProvider.sortColumnIndex = 2;
                     usersProvider.sort<String>((user) => user.correo);
                   }),
-              DataColumn(label: Text('UID')),
-              DataColumn(label: Text('Acciones')),
+              const DataColumn(label: Text('UID')),
+              const DataColumn(label: Text('Acciones')),
             ],
             source: usersDataSource,
             onPageChanged: (page) {},

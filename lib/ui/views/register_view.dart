@@ -1,11 +1,11 @@
-import 'package:app_admin_dashboard/provider/auth_provider.dart';
-import 'package:app_admin_dashboard/services/navigaton_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import 'package:email_validator/email_validator.dart';
+import 'package:app_admin_dashboard/provider/providers.dart';
 
-import 'package:app_admin_dashboard/provider/register_form_provider.dart';
+import 'package:app_admin_dashboard/services/services.dart';
+
+import 'package:email_validator/email_validator.dart';
 
 import 'package:app_admin_dashboard/router/router.dart';
 

@@ -1,21 +1,17 @@
-import 'package:app_admin_dashboard/provider/user_form_provider.dart';
-import 'package:app_admin_dashboard/provider/users_provider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:app_admin_dashboard/provider/sidemenu_provider.dart';
+import 'package:app_admin_dashboard/api/cafe_api.dart';
+
 import 'package:app_admin_dashboard/ui/layouts/dashboard/dashboard_layout.dart';
 import 'package:app_admin_dashboard/ui/layouts/splash/splash_layout.dart';
 
 import 'package:provider/provider.dart';
-import 'package:app_admin_dashboard/provider/auth_provider.dart';
-import 'package:app_admin_dashboard/api/cafe_api.dart';
-import 'package:app_admin_dashboard/provider/categories_provider.dart';
+import 'package:app_admin_dashboard/provider/providers.dart';
+
+import 'package:app_admin_dashboard/services/services.dart';
 
 import 'package:app_admin_dashboard/router/router.dart';
 
-import 'package:app_admin_dashboard/services/local_storage.dart';
-import 'package:app_admin_dashboard/services/navigaton_service.dart';
-import 'package:app_admin_dashboard/services/notifications_service.dart';
 
 import 'package:app_admin_dashboard/ui/layouts/auth/auth_layout.dart';
 

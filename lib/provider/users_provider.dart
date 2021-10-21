@@ -32,7 +32,6 @@ class UsersProvider extends ChangeNotifier {
 
       return user;
     } catch (e) {
-      print(e);
       return null;
     }
   }

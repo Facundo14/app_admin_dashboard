@@ -1,14 +1,17 @@
-import 'package:app_admin_dashboard/provider/auth_provider.dart';
-import 'package:app_admin_dashboard/provider/login_form_provider.dart';
-import 'package:app_admin_dashboard/services/navigaton_service.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_admin_dashboard/router/router.dart';
+
+import 'package:provider/provider.dart';
+import 'package:app_admin_dashboard/provider/providers.dart';
+
+import 'package:app_admin_dashboard/services/services.dart';
+
+import 'package:email_validator/email_validator.dart';
+
 import 'package:app_admin_dashboard/ui/buttons/custom_outlined_button.dart';
 import 'package:app_admin_dashboard/ui/buttons/link_text.dart';
 import 'package:app_admin_dashboard/ui/inputs/custom_inputs.dart';
-import 'package:provider/provider.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);

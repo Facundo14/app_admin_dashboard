@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:app_admin_dashboard/services/local_storage.dart';
 import 'package:dio/dio.dart';
 
@@ -18,8 +20,7 @@ class CafeApi {
       final resp = await _dio.get(path);
       return resp.data;
     } on DioError catch (e) {
-      print(e.response);
-      throw ('Error en el GET');
+      throw ('Error en el GET ${e.response}');
     }
   }
 
@@ -29,8 +30,7 @@ class CafeApi {
       final resp = await _dio.post(path, data: formData);
       return resp.data;
     } on DioError catch (e) {
-      print(e.response);
-      throw ('Error en el POST');
+      throw ('Error en el POST ${e.response}');
     }
   }
 
@@ -40,8 +40,7 @@ class CafeApi {
       final resp = await _dio.put(path, data: formData);
       return resp.data;
     } on DioError catch (e) {
-      print(e.response);
-      throw ('Error en el PUT $e');
+      throw ('Error en el PUT  ${e.response}');
     }
   }
 
@@ -51,8 +50,19 @@ class CafeApi {
       final resp = await _dio.delete(path, data: formData);
       return resp.data;
     } on DioError catch (e) {
-      print(e.response);
-      throw ('Error en el DELETE');
+      throw ('Error en el DELETE ${e.response}');
+    }
+  }
+
+  static Future uploadFile(String path, Uint8List bytes) async {
+    final formData = FormData.fromMap({
+      'archivo': MultipartFile.fromBytes(bytes),
+    });
+    try {
+      final resp = await _dio.put(path, data: formData);
+      return resp.data;
+    } on DioError catch (e) {
+      throw ('Error en el PUT  ${e.response}');
     }
   }
 }
